@@ -1,0 +1,60 @@
+<!-- <!DOCTYPE html> -->
+<html>
+<head>
+    <title>Reaction Tester Project</title>
+</head>
+
+<body>
+    <style>
+        #ball {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border-radius: 50%;
+            position: relative;
+        }
+    </style>
+    <h1>Reaction Tester</h1>
+    <p>Click on the balls as soon as you can!</p>
+    <div id="ball"></div>
+    <script>
+        var start = new Date().getTime();
+
+        //To change the color of the ball
+        function getRandomColor(){
+            var letters = '0123456789ABCEDEF';
+            var color = "#";
+            for(var i=0; i<6; i++){
+                color += letters[Math.floor(Math.random()*16)];
+            }
+            return color;
+        }
+        //To move the balls across the page
+        function move(){
+            var left;
+            var top;
+            var wh;
+            left = (Math.random()*300)+100;
+            top = (Math.random()*300)+100;
+            wh =   (Math.random()*400)+100;
+            document.getElementById("ball").style.left = left;
+            document.getElementById("ball").style.top = top;
+            document.getElementById("ball").style.width = wh;
+            document.getElementById("ball").style.height = wh;
+            document.getElementById("ball").style.display = left;
+            document.getElementById("ball").style.backgroundColor = getRandomColor();
+            var start = new Date().getTime();
+        }
+        //Disappear the ball when the circle shape is clicked by the user
+        document.getElementById("ball").onclick = function() {
+            document.getElementById("ball").style.display = "block";
+            var end = new Date().getTime();
+            // 1 s = 1000 ms
+            var TimeTaken =  (end-start)/1000 ;
+            alert("Time taken: " + TimeTaken);
+            move();
+        }
+    </script>
+</body>
+
+</html>
